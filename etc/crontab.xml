@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="caravel_pay_cancel_expired" instance="Caravel\Pay\Cron\CancelExpired" method="execute">
+            <schedule>*/15 * * * *</schedule>
+        </job>
+    </group>
+</config>

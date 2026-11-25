@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <caravelpay>
+                <active>0</active>
+                <model>CaravelPayFacade</model>
+                <title>Card, Apple Pay or Google Pay</title>
+                <order_status>caravel_pending</order_status>
+                <payment_action>authorize</payment_action>
+                <can_initialize>1</can_initialize>
+                <can_use_checkout>1</can_use_checkout>
+                <can_use_internal>0</can_use_internal>
+                <is_gateway>0</is_gateway>
+                <currency>USD</currency>
+                <fee_mode>seller</fee_mode>
+                <fx_buffer>0</fx_buffer>
+                <cancel_after_hours>24</cancel_after_hours>
+                <allowspecific>0</allowspecific>
+                <sort_order>10</sort_order>
+            </caravelpay>
+        </payment>
+    </default>
+</config>

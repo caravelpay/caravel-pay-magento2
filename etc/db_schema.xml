@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="caravel_pay_order" resource="default" engine="innodb" comment="Caravel Pay checkout record per order">
+        <column xsi:type="int" name="order_id" unsigned="true" nullable="false" comment="sales_order.entity_id"/>
+        <column xsi:type="varchar" name="nonce" length="16" nullable="false" default="" comment="Reserved"/>
+        <column xsi:type="text" name="request" nullable="true" comment="Saved POST /v1/checkouts body (JSON)"/>
+        <column xsi:type="int" name="attempt" unsigned="true" nullable="false" default="1" comment="Attempt"/>
+        <column xsi:type="varchar" name="request_merchant" length="64" nullable="false" default="" comment="Merchant that sent the request"/>
+        <column xsi:type="varchar" name="checkout_id" length="140" nullable="false" default="" comment="Newest checkout id"/>
+        <column xsi:type="varchar" name="checkout_url" length="2048" nullable="false" default="" comment="Hosted checkout URL"/>
+        <column xsi:type="varchar" name="expires_at" length="32" nullable="false" default="" comment="Checkout expires_at"/>
+        <column xsi:type="varchar" name="marker" length="200" nullable="false" default="" comment="Last applied checkout status"/>
+        <column xsi:type="varchar" name="paid_amount" length="20" nullable="false" default="" comment="Last underpaid amount"/>
+        <column xsi:type="int" name="cancel_after" unsigned="true" nullable="false" default="0" comment="Unix time the expired order is cancelled"/>
+        <column xsi:type="text" name="events" nullable="true" comment="Recent webhook event ids (JSON)"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="order_id"/>
+        </constraint>
+        <index referenceId="CARAVEL_PAY_ORDER_CANCEL_AFTER" indexType="btree">
+            <column name="cancel_after"/>
+        </index>
+    </table>
+    <table name="caravel_pay_checkout" resource="default" engine="innodb" comment="Caravel Pay checkout id to order and merchant">
+        <column xsi:type="varchar" name="checkout_id" length="140" nullable="false" comment="Checkout id"/>
+        <column xsi:type="int" name="order_id" unsigned="true" nullable="false" comment="sales_order.entity_id"/>
+        <column xsi:type="varchar" name="merchant_id" length="64" nullable="false" comment="Merchant that created it"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="checkout_id"/>
+        </constraint>
+        <index referenceId="CARAVEL_PAY_CHECKOUT_ORDER_ID" indexType="btree">
+            <column name="order_id"/>
+        </index>
+    </table>
+    <table name="caravel_pay_event" resource="default" engine="innodb" comment="Caravel Pay processed webhook events">
+        <column xsi:type="varchar" name="event_id" length="140" nullable="false" comment="Event id"/>
+        <column xsi:type="datetime" name="created_at" nullable="false" comment="Received at (UTC)"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="event_id"/>
+        </constraint>
+    </table>
+    <table name="caravel_pay_setting" resource="default" engine="innodb" comment="Caravel Pay credentials and merchant status">
+        <column xsi:type="varchar" name="setting_key" length="64" nullable="false" comment="Key"/>
+        <column xsi:type="mediumtext" name="value" nullable="false" comment="Value (secrets encrypted)"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="setting_key"/>
+        </constraint>
+    </table>
+</schema>

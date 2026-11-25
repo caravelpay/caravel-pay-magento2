@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="payment">
+            <group id="caravelpay" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Caravel Pay: card, Apple Pay and Google Pay, paid out in USDC</label>
+                <comment>Paste your Polygon payout wallet and save: saving connects the store, there is no account or API key to copy. Payouts arrive in USDC on Polygon (or in the token the buyer paid with), minus the 2% Caravel fee. Orders in a supported currency other than US dollars are converted to US dollars when the buyer pays.</comment>
+                <field id="connection_status" translate="label" type="label" sortOrder="1" showInDefault="1">
+                    <label>Connection</label>
+                    <frontend_model>Caravel\Pay\Block\Adminhtml\System\Config\Status</frontend_model>
+                </field>
+                <field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="payout_wallet" translate="label comment" type="text" sortOrder="20" showInDefault="1">
+                    <label>Payout wallet</label>
+                    <comment>Your Polygon address, starting with 0x. Every payout is sent here. Saving a new wallet connects again: new orders pay out to it, orders already started finish on the old one.</comment>
+                    <backend_model>Caravel\Pay\Model\Config\Backend\Wallet</backend_model>
+                </field>
+                <field id="reconnect" translate="label comment" type="select" sortOrder="25" showInDefault="1">
+                    <label>Reconnect on save</label>
+                    <comment>Get new credentials for the same wallet, for example if the connection line says they were rejected.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <backend_model>Caravel\Pay\Model\Config\Backend\Reconnect</backend_model>
+                </field>
+                <field id="title" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Title</label>
+                </field>
+                <field id="instructions" translate="label" type="textarea" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Instructions at checkout</label>
+                </field>
+                <field id="fee_mode" translate="label comment" type="select" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Who pays the fees</label>
+                    <comment>Seller pays everything: your buyer pays the order total, and the card provider's fee and the 2% Caravel fee come off what you receive. Split: the card provider's fee is added to your buyer's total, and you pay the 2% Caravel fee. Buyer pays everything: the 2% Caravel fee is added to your buyer's total too, so you receive the full order total. Card surcharges are restricted in some countries (for example on consumer cards in the EU and the UK): check your local rules before passing fees on.</comment>
+                    <source_model>Caravel\Pay\Model\Config\Source\FeeMode</source_model>
+                </field>
+                <field id="fx_buffer" translate="label comment" type="text" sortOrder="47" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Exchange-rate buffer (%)</label>
+                    <comment>Only for stores that don't price in US dollars. Buyers are charged in US dollars at the exchange rate of the moment they check out, and you are paid in USDC. A buffer adds a margin to the converted amount, to cover exchange-rate movement until you convert your USDC. 0 to 5. Leave it at 0 to charge the plain converted amount.</comment>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="cancel_after_hours" translate="label comment" type="text" sortOrder="50" showInDefault="1">
+                    <label>Cancel unpaid orders after (hours)</label>
+                    <comment>After a checkout expires unpaid, its order is cancelled once this many hours have passed (default 24; 0 = at once). Until then a payment that confirms late still completes the order.</comment>
+                    <validate>validate-digits validate-zero-or-greater</validate>
+                </field>
+                <field id="allowspecific" translate="label" type="allowspecific" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Payment from Applicable Countries</label>
+                    <source_model>Magento\Payment\Model\Config\Source\Allspecificcountries</source_model>
+                </field>
+                <field id="specificcountry" translate="label" type="multiselect" sortOrder="61" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Payment from Specific Countries</label>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                    <can_be_empty>1</can_be_empty>
+                    <depends>
+                        <field id="allowspecific">1</field>
+                    </depends>
+                </field>
+                <field id="sort_order" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sort Order</label>
+                    <frontend_class>validate-number</frontend_class>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,55 @@
+{
+    "caravel_pay_order": {
+        "column": {
+            "order_id": true,
+            "nonce": true,
+            "request": true,
+            "attempt": true,
+            "request_merchant": true,
+            "checkout_id": true,
+            "checkout_url": true,
+            "expires_at": true,
+            "marker": true,
+            "paid_amount": true,
+            "cancel_after": true,
+            "events": true
+        },
+        "index": {
+            "CARAVEL_PAY_ORDER_CANCEL_AFTER": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "caravel_pay_checkout": {
+        "column": {
+            "checkout_id": true,
+            "order_id": true,
+            "merchant_id": true
+        },
+        "index": {
+            "CARAVEL_PAY_CHECKOUT_ORDER_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "caravel_pay_event": {
+        "column": {
+            "event_id": true,
+            "created_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "caravel_pay_setting": {
+        "column": {
+            "setting_key": true,
+            "value": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

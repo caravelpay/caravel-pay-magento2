@@ -1,0 +1,84 @@
+Not connected,Not connected
+Enter your payout wallet and save to connect.,Enter your payout wallet and save to connect.
+%1$s (%2$s),%1$s (%2$s)
+Paused,Paused
+New checkouts are paused: %1$s.,New checkouts are paused: %1$s.
+New checkouts are paused: no reason was given.,New checkouts are paused: no reason was given.
+Caravel Pay is hidden at checkout. Open checkouts and payouts still finish. Email hello@caravelpay.app with your store URL if you have questions.,Caravel Pay is hidden at checkout. Open checkouts and payouts still finish. Email hello@caravelpay.app with your store URL if you have questions.
+Waiting for approval,Waiting for approval
+Caravel Pay is reviewing this store. It stays hidden at checkout until it is approved.,Caravel Pay is reviewing this store. It stays hidden at checkout until it is approved.
+Connected,Connected
+"Payouts go to %1$s, minus the %2$s Caravel fee. Merchant ID %3$s.","Payouts go to %1$s, minus the %2$s Caravel fee. Merchant ID %3$s."
+Merchant ID %1$s. Caravel fee: %2$s.,Merchant ID %1$s. Caravel fee: %2$s.
+The new wallet %1$s is not connected yet: %2$s. Payouts still go to the wallet above. %3$s,The new wallet %1$s is not connected yet: %2$s. Payouts still go to the wallet above. %3$s
+The last reconnect failed: %1$s. The existing connection keeps working. %2$s,The last reconnect failed: %1$s. The existing connection keeps working. %2$s
+The status could not be refreshed just now; this is the last known status.,The status could not be refreshed just now; this is the last known status.
+Your store address must be a public https:// address.,Your store address must be a public https:// address.
+"Too many connection attempts. Wait a few minutes, then reconnect.","Too many connection attempts. Wait a few minutes, then reconnect."
+"Caravel Pay could not be reached just now. Check that your server can make outgoing HTTPS requests to api.caravelpay.app, then reconnect.","Caravel Pay could not be reached just now. Check that your server can make outgoing HTTPS requests to api.caravelpay.app, then reconnect."
+Caravel Pay did not accept the saved credentials. Reconnect to get new ones.,Caravel Pay did not accept the saved credentials. Reconnect to get new ones.
+"Your server clock is more than 5 minutes off. Sync it with NTP, then reload this page.","Your server clock is more than 5 minutes off. Sync it with NTP, then reload this page."
+The Caravel Pay API address must be an https:// address with no path.,The Caravel Pay API address must be an https:// address with no path.
+"This payout wallet can't be connected right now. Use another wallet, or email hello@caravelpay.app with your store URL.","This payout wallet can't be connected right now. Use another wallet, or email hello@caravelpay.app with your store URL."
+"Check the payout wallet: it must be a Polygon address you control (not a token contract), then save again.","Check the payout wallet: it must be a Polygon address you control (not a token contract), then save again."
+"Check the payout wallet, then reconnect. If it keeps failing, email hello@caravelpay.app with your store URL.","Check the payout wallet, then reconnect. If it keeps failing, email hello@caravelpay.app with your store URL."
+Caravel Pay checkout %1$s created. The order updates when the payment is confirmed.,Caravel Pay checkout %1$s created. The order updates when the payment is confirmed.
+Caravel Pay detected a payment and is waiting for confirmation. Don't ship yet.,Caravel Pay detected a payment and is waiting for confirmation. Don't ship yet.
+"Caravel Pay: underpaid. $%1$s of $%2$s arrived (checkout %3$s). Hold the order and contact the buyer: accept it, ask for the difference, or refund from your wallet.","Caravel Pay: underpaid. $%1$s of $%2$s arrived (checkout %3$s). Hold the order and contact the buyer: accept it, ask for the difference, or refund from your wallet."
+Caravel Pay: the payment for checkout %1$s needs a manual review (for example a payment after expiry or in a token that is not credited automatically). Keep the order on hold; a follow-up webhook arrives if it is resolved.,Caravel Pay: the payment for checkout %1$s needs a manual review (for example a payment after expiry or in a token that is not credited automatically). Keep the order on hold; a follow-up webhook arrives if it is resolved.
+Caravel Pay checkout %1$s expired without payment.,Caravel Pay checkout %1$s expired without payment.
+"Caravel Pay checkout %1$s expired. The order is on hold, so it was not cancelled.","Caravel Pay checkout %1$s expired. The order is on hold, so it was not cancelled."
+"Caravel Pay checkout %1$s is now ""%2$s"". The order status was left unchanged; please review the payment.","Caravel Pay checkout %1$s is now ""%2$s"". The order status was left unchanged; please review the payment."
+Caravel Pay payment confirmed (checkout %1$s). %2$s,Caravel Pay payment confirmed (checkout %1$s). %2$s
+This order had been cancelled after its checkout expired; the payment arrived late and completed it.,This order had been cancelled after its checkout expired; the payment arrived late and completed it.
+"Caravel Pay checkout %1$s was paid, but this order was already paid. Check for a double payment. %2$s","Caravel Pay checkout %1$s was paid, but this order was already paid. Check for a double payment. %2$s"
+"Caravel Pay checkout %1$s was paid while the order is ""%2$s"". The status was left unchanged; please review. %3$s","Caravel Pay checkout %1$s was paid while the order is ""%2$s"". The status was left unchanged; please review. %3$s"
+"Caravel Pay received $%1$s, but the order total is now %2$s. The order was put on hold instead of being completed; check it before shipping. %3$s","Caravel Pay received $%1$s, but the order total is now %2$s. The order was put on hold instead of being completed; check it before shipping. %3$s"
+Payout: %1$s %2$s to your wallet. Transaction: %3$s,Payout: %1$s %2$s to your wallet. Transaction: %3$s
+Payout details are not available yet.,Payout details are not available yet.
+Caravel Pay checkout %1$s expired without payment. The order is cancelled after %2$s hours unless a late payment confirms first.,Caravel Pay checkout %1$s expired without payment. The order is cancelled after %2$s hours unless a late payment confirms first.
+"Caravel Pay checkout %1$s was paid after this order was cancelled, and the order can't be reopened automatically. The money is in your wallet: fulfil a replacement order or refund the buyer. %2$s","Caravel Pay checkout %1$s was paid after this order was cancelled, and the order can't be reopened automatically. The money is in your wallet: fulfil a replacement order or refund the buyer. %2$s"
+This order is already being prepared. Please try again in a moment.,This order is already being prepared. Please try again in a moment.
+This order can no longer be paid. Please go back to checkout.,This order can no longer be paid. Please go back to checkout.
+"Caravel Pay can't take orders in this currency. Please choose another payment method.","Caravel Pay can't take orders in this currency. Please choose another payment method."
+"Caravel Pay can't take orders in this currency.","Caravel Pay can't take orders in this currency."
+"Currency: %1$s %2$s is charged as $%3$s (1 %2$s = %4$s USD, fixed for this checkout).","Currency: %1$s %2$s is charged as $%3$s (1 %2$s = %4$s USD, fixed for this checkout)."
+"Exchange-rate buffer (%)","Exchange-rate buffer (%)"
+"Only for stores that don't price in US dollars. Buyers are charged in US dollars at the exchange rate of the moment they check out, and you are paid in USDC. A buffer adds a margin to the converted amount, to cover exchange-rate movement until you convert your USDC. 0 to 5. Leave it at 0 to charge the plain converted amount.","Only for stores that don't price in US dollars. Buyers are charged in US dollars at the exchange rate of the moment they check out, and you are paid in USDC. A buffer adds a margin to the converted amount, to cover exchange-rate movement until you convert your USDC. 0 to 5. Leave it at 0 to charge the plain converted amount."
+This payment method is temporarily unavailable. Please choose another one.,This payment method is temporarily unavailable. Please choose another one.
+This order changed after its payment was started. Please contact the store.,This order changed after its payment was started. Please contact the store.
+This order changed while its payment was being prepared. Please contact the store.,This order changed while its payment was being prepared. Please contact the store.
+Caravel Pay is temporarily unavailable. Please try again.,Caravel Pay is temporarily unavailable. Please try again.
+A payment for this order is already in progress. Please wait for it to finish or contact the store.,A payment for this order is already in progress. Please wait for it to finish or contact the store.
+Caravel Pay returned an unexpected answer. Please try again.,Caravel Pay returned an unexpected answer. Please try again.
+This order can't be paid with Caravel Pay right now. Please choose another payment method.,This order can't be paid with Caravel Pay right now. Please choose another payment method.
+Caravel Pay can't take this order amount. Please choose another payment method.,Caravel Pay can't take this order amount. Please choose another payment method.
+This payment method is not set up correctly. Please choose another one or contact the store.,This payment method is not set up correctly. Please choose another one or contact the store.
+A payment for this invoice has already been received.,A payment for this invoice has already been received.
+Please pay these invoices one at a time.,Please pay these invoices one at a time.
+"You will be sent to the secure Caravel Pay checkout to pay by card, Apple Pay or Google Pay.","You will be sent to the secure Caravel Pay checkout to pay by card, Apple Pay or Google Pay."
+The payment was not completed. Your cart was restored so you can try again.,The payment was not completed. Your cart was restored so you can try again.
+Thank you. Your payment is being confirmed; you will get an email when it is done.,Thank you. Your payment is being confirmed; you will get an email when it is done.
+Enter a Polygon address that starts with 0x.,Enter a Polygon address that starts with 0x.
+Connecting to Caravel Pay failed: %1 (%2). See the Connection line.,Connecting to Caravel Pay failed: %1 (%2). See the Connection line.
+The new payout wallet is connected. New orders pay out to it; orders already started finish on the old one.,The new payout wallet is connected. New orders pay out to it; orders already started finish on the old one.
+Connected to Caravel Pay.,Connected to Caravel Pay.
+Webhook URL: %1,Webhook URL: %1
+"Caravel Pay: card, Apple Pay and Google Pay, paid out in USDC","Caravel Pay: card, Apple Pay and Google Pay, paid out in USDC"
+Connection,Connection
+Enabled,Enabled
+Payout wallet,Payout wallet
+Reconnect on save,Reconnect on save
+Title,Title
+Instructions at checkout,Instructions at checkout
+Cancel unpaid orders after (hours),Cancel unpaid orders after (hours)
+Awaiting Caravel Pay payment,Awaiting Caravel Pay payment
+Fees: the card provider's fee is added to the buyer's total.,Fees: the card provider's fee is added to the buyer's total.
+Fees: the buyer pays both fees and is charged $%1$s before the card provider's fee.,Fees: the buyer pays both fees and is charged $%1$s before the card provider's fee.
+The card provider adds its fee to your total at payment. You see it before you pay.,The card provider adds its fee to your total at payment. You see it before you pay.
+A processing fee and the card provider's fee are added to your total at payment. You see them before you pay.,A processing fee and the card provider's fee are added to your total at payment. You see them before you pay.
+Who pays the fees,Who pays the fees
+Seller pays everything (default),Seller pays everything (default)
+Split: buyer pays the card fee,Split: buyer pays the card fee
+Buyer pays everything,Buyer pays everything
+"Seller pays everything: your buyer pays the order total, and the card provider's fee and the 2% Caravel fee come off what you receive. Split: the card provider's fee is added to your buyer's total, and you pay the 2% Caravel fee. Buyer pays everything: the 2% Caravel fee is added to your buyer's total too, so you receive the full order total. Card surcharges are restricted in some countries (for example on consumer cards in the EU and the UK): check your local rules before passing fees on.","Seller pays everything: your buyer pays the order total, and the card provider's fee and the 2% Caravel fee come off what you receive. Split: the card provider's fee is added to your buyer's total, and you pay the 2% Caravel fee. Buyer pays everything: the 2% Caravel fee is added to your buyer's total too, so you receive the full order total. Card surcharges are restricted in some countries (for example on consumer cards in the EU and the UK): check your local rules before passing fees on."

@@ -1,0 +1,26 @@
+{
+    "name": "caravelpay/module-caravel-pay",
+    "description": "Caravel Pay for Magento 2, Adobe Commerce and Mage-OS: card, Apple Pay and Google Pay checkout, payouts in USDC on Polygon, minus the 2% Caravel fee.",
+    "type": "magento2-module",
+    "version": "1.2.1",
+    "license": "MIT",
+    "require": {
+        "php": "~7.4.0||~8.1.0||~8.2.0||~8.3.0||~8.4.0",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "magento/framework": "^103.0.4",
+        "magento/module-checkout": "*",
+        "magento/module-config": "*",
+        "magento/module-payment": "*",
+        "magento/module-sales": "*",
+        "magento/module-store": "*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Caravel\\Pay\\": ""
+        }
+    }
+}
