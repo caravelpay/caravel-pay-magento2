@@ -13,6 +13,7 @@ use CaravelPay\Connector\SdkApi;
 use CaravelPay\Connector\Urls;
 use CaravelPay\Connector\WebhookProcessor;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\Url as FrontendUrl;
 use Magento\Framework\UrlInterface;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
@@ -22,7 +23,7 @@ use Magento\Store\Model\StoreManagerInterface;
  */
 class Service implements EventLog
 {
-    public const VERSION = '1.2.1';
+    public const VERSION = '1.2.2';
     public const CODE = 'caravelpay';
 
     /** @var Store */
@@ -35,7 +36,7 @@ class Service implements EventLog
     private $config;
     /** @var StoreManagerInterface */
     private $storeManager;
-    /** @var UrlInterface */
+    /** @var FrontendUrl */
     private $url;
     /** @var Texts */
     private $texts;
@@ -48,7 +49,7 @@ class Service implements EventLog
     /** @var Messages|null */
     private $messages;
 
-    public function __construct(Store $store, Settings $settings, PsrLogger $logger, ScopeConfigInterface $config, StoreManagerInterface $storeManager, UrlInterface $url, Texts $texts)
+    public function __construct(Store $store, Settings $settings, PsrLogger $logger, ScopeConfigInterface $config, StoreManagerInterface $storeManager, FrontendUrl $url, Texts $texts)
     {
         $this->store = $store;
         $this->settings = $settings;
@@ -127,10 +128,18 @@ class Service implements EventLog
         }
     }
 
-    /** The webhook URL sent with each checkout. */
+    /** The webhook URL sent with each checkout (always storefront, never Adminhtml). */
     public function callbackUrl(): string
     {
-        return $this->url->getUrl('caravelpay/webhook/index', ['_secure' => true, '_nosid' => true]);
+        $params = ['_secure' => true, '_nosid' => true];
+        $store = $this->storeManager->getStore();
+        if (0 === (int) $store->getId()) {
+            $default = $this->storeManager->getDefaultStoreView();
+            if ($default) {
+                $params['_scope'] = $default;
+            }
+        }
+        return $this->url->getUrl('caravelpay/webhook/index', $params);
     }
 
     /**
@@ -148,8 +157,9 @@ class Service implements EventLog
 
     public function connectInput(): ConnectInput
     {
-        $base = $this->storeManager->getStore()->getBaseUrl(UrlInterface::URL_TYPE_WEB, true);
-        $email = (string) $this->config->getValue('trans_email/ident_general/email', ScopeInterface::SCOPE_STORE);
+        $store = $this->storeManager->getDefaultStoreView() ?: $this->storeManager->getStore();
+        $base = $store->getBaseUrl(UrlInterface::URL_TYPE_WEB, true);
+        $email = (string) $this->config->getValue('trans_email/ident_general/email', ScopeInterface::SCOPE_STORE, $store->getId());
         return new ConnectInput((string) $base, $email, 'magento', self::VERSION);
     }
 

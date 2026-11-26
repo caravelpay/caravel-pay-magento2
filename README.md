@@ -25,7 +25,7 @@ module connects the store.
 ```sh
 mkdir -p artifacts && cp caravel-pay-magento2-composer.zip artifacts/
 composer config repositories.caravelpay artifact ./artifacts
-composer require caravelpay/module-caravel-pay:1.2.1
+composer require caravelpay/module-caravel-pay:1.2.2
 bin/magento module:enable Caravel_Pay
 bin/magento setup:upgrade
 bin/magento setup:di:compile            # production mode

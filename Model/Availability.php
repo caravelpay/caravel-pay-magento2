@@ -25,6 +25,15 @@ class Availability
         if (!$result || Service::CODE !== $subject->getCode()) {
             return $result;
         }
+        if (null !== $quote) {
+            $rawCurrency = method_exists($quote, 'getQuoteCurrencyCode')
+                ? $quote->getQuoteCurrencyCode()
+                : (method_exists($quote, 'getCurrency') && $quote->getCurrency() ? $quote->getCurrency()->getQuoteCurrencyCode() : '');
+            $currency = \CaravelPay\Currency::code((string) $rawCurrency);
+            if (!\CaravelPay\Currency::isSupported($currency)) {
+                return false;
+            }
+        }
         try {
             return $this->service->connection()->checkoutReady();
         } catch (\Throwable $e) {
